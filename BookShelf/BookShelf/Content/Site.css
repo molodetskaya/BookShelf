@@ -22,3 +22,13 @@ select,
 textarea {
     max-width: 280px;
 }
+
+.extremum-slide-adding {
+	padding:50px;
+	display:none;
+}
+
+.extremum-slide {
+	padding:50px;
+	display:none;
+}

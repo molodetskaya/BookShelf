@@ -4,7 +4,7 @@
     <Key>
       <PropertyRef Name="BookId" />
     </Key>
-    <Property Name="BookId" Type="int" Nullable="false" />
+    <Property Name="BookId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="BookName" Type="nvarchar" MaxLength="200" Nullable="false" />
     <Property Name="BookAuthor" Type="nvarchar" MaxLength="200" Nullable="false" />
   </EntityType>

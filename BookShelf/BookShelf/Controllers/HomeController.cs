@@ -1,5 +1,7 @@
-﻿using System;
+﻿using BookShelf.Models;
+using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -8,11 +10,16 @@ namespace BookShelf.Controllers
 {
     public class HomeController : Controller
     {
+        BooksEntities db = new BooksEntities();
         public ActionResult Index()
         {
             return View();
         }
 
+        public ActionResult List()
+        {
+            return PartialView(db.BookShelves);
+        }
         public ActionResult About()
         {
             ViewBag.Message = "Your application description page.";
@@ -25,6 +32,77 @@ namespace BookShelf.Controllers
             ViewBag.Message = "Your contact page.";
 
             return View();
+        }
+        public ActionResult EditBook(int? id)
+        {
+            Models.BookShelf bs = db.BookShelves.Find(id);
+
+            if (bs == null)
+            {
+                return HttpNotFound();
+            }
+            return PartialView(bs);
+        }
+        [HttpPost]
+        public void EditBook(Models.BookShelf book)
+        {
+            if (ModelState.IsValid)
+            {
+                db.Entry(book).State = EntityState.Modified;
+                db.SaveChanges();
+            }
+        }
+        [HttpGet]
+        public string GetName(int? id)
+        {
+            Models.BookShelf bs = db.BookShelves.Find(id);
+
+            if (bs == null)
+            {
+                return "";
+            }
+            return bs.BookName;
+        }
+       
+        public ActionResult AddBook()
+        {
+            return PartialView("AddBook");
+        }
+        [HttpPost]
+        public void AddBook(Models.BookShelf book)
+        {
+            if (ModelState.IsValid)
+            {
+                db.BookShelves.Add(book);
+                db.SaveChanges();
+            }
+        }
+        [HttpPost]
+        public ActionResult DeleteBook(int id)
+        {
+            Models.BookShelf bs = db.BookShelves.Find(id);
+
+            if (bs == null)
+            {
+                return HttpNotFound();
+            }
+            db.BookShelves.Remove(bs);
+            db.SaveChanges();
+            return RedirectToAction("List");
+        }
+        public Models.BookShelf GetBook(int? id)
+        {
+            if (id == null)
+            {
+                return null;
+            }
+            Models.BookShelf bs = db.BookShelves.Find(id);
+
+            if (bs == null)
+            {
+                return null;
+            }
+            return bs;
         }
     }
 }
