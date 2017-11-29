@@ -15,8 +15,7 @@
 </div>
 <div id="jumbatron ">
     <div class="js-block">
-        <h1 class="extremum-click"></h1>
-        <div id="editing-container" class="extremum-slide">
+        <div id="editing-container">
         </div>
     </div>
 </div>
@@ -44,6 +43,7 @@
         $(document).ready(function () {
 
             $('.books').on('click', '#delete-button', function () {
+                $('#editing-container').html('');
                 var item = { id: $(this).attr("data-content") };
                 var options = {
                     "backdrop": "static"
@@ -81,14 +81,11 @@
                 var item = { id: $(this).attr("data-content") };
                 $.get(url, item, function (data) {
                     $('#editing-container').html('');
-                    $('#editing-container').append(data);
+                    $('#editing-container').html(data);
                     $('#edit-name').focus();
                 });
             });
 
-            $('#edit-cancel').on('click', function () {
-                $('#editing-container').html('');
-            });
         });
     </script>
 }
