@@ -1,0 +1,22 @@
+﻿@model BookShelf.Models.BookShelf
+
+@{
+    ViewBag.Title = "Add book";
+}
+
+<div class="jumbotron">
+
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+
+        <div id="add-boxes"></div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="button" id="add-submit" value="Add" class="btn btn-default" />
+                <input type="button" id="add-cancel" value="Cancel" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+</div>

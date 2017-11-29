@@ -3,8 +3,7 @@
 @{
     ViewBag.Title = "";
 }
-@*<div class="jumbotron">*@
-<table class="table table-striped books">
+<table id="list-books" class="table table-striped books">
     <tr class="header">
         <th class="col-md-2"><p>Book Id</p></th>
         <th class="col-md-4"><p>Book Name</p></th>
@@ -15,12 +14,6 @@
     {
         <tr id="tr-@b.BookId">
             <td class="col-md-2"><p>@b.BookId</p></td>
-            @*<td class="col-md-4"><p>@Ajax.ActionLink(@b.BookName, "EditBook", new { id = b.BookId },
-                            new AjaxOptions()
-                            {
-                                UpdateTargetId = "editing-container"
-                            },
-                            new { id = "edit-button", data = b.BookId })</p></td>*@
             <td class="col-md-4"><a id="edit-button", data-content="@b.BookId"> @b.BookName </a></td>
             <td class="col-md-4"><p>@b.BookAuthor</p></td>
             <td><button data-content="@b.BookId" id="delete-button" class="btn-default">Delete</button></td>

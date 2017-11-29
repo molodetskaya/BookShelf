@@ -33,6 +33,18 @@ namespace BookShelf.Controllers
 
             return View();
         }
+        public ActionResult EditForm()
+        {
+            return PartialView();
+        }
+        public ActionResult AddForm()
+        {
+            return PartialView();
+        }
+        public ActionResult ConfirmModal()
+        {
+            return PartialView();
+        }
         public ActionResult EditBook(int? id)
         {
             Models.BookShelf bs = db.BookShelves.Find(id);
