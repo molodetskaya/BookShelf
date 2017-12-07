@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<parameters>
+  <parameter name="BooksEntities-Web.config Connection String" description="BooksEntities Connection String used in web.config by the application to access the database." defaultValue="metadata=res://*/Models.BookShelfModel.csdl|res://*/Models.BookShelfModel.ssdl|res://*/Models.BookShelfModel.msl;provider=System.Data.SqlClient;provider connection string=&quot;data source=(LocalDB)\MSSQLLocalDB;attachdbfilename=|DataDirectory|\Books.mdf;integrated security=True;MultipleActiveResultSets=True;App=EntityFramework&quot;" tags="SqlConnectionString">
+    <parameterEntry kind="XmlFile" scope="Y:\\Book\ Shelf\\BookShelf\\BookShelf\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='BooksEntities']/@connectionString" />
+  </parameter>
+</parameters>

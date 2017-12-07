@@ -33,6 +33,18 @@ namespace BookShelf.Controllers
 
             return View();
         }
+        public ActionResult EditForm()
+        {
+            return PartialView();
+        }
+        public ActionResult AddForm()
+        {
+            return PartialView();
+        }
+        public ActionResult ConfirmModal()
+        {
+            return PartialView();
+        }
         public ActionResult EditBook(int? id)
         {
             Models.BookShelf bs = db.BookShelves.Find(id);
@@ -44,13 +56,15 @@ namespace BookShelf.Controllers
             return PartialView(bs);
         }
         [HttpPost]
-        public void EditBook(Models.BookShelf book)
+        public bool EditBook(Models.BookShelf book)
         {
             if (ModelState.IsValid)
             {
                 db.Entry(book).State = EntityState.Modified;
                 db.SaveChanges();
+                return true;
             }
+            return false;
         }
         [HttpGet]
         public string GetName(int? id)
@@ -63,19 +77,21 @@ namespace BookShelf.Controllers
             }
             return bs.BookName;
         }
-       
+
         public ActionResult AddBook()
         {
             return PartialView("AddBook");
         }
         [HttpPost]
-        public void AddBook(Models.BookShelf book)
+        public bool AddBook(Models.BookShelf book)
         {
             if (ModelState.IsValid)
             {
                 db.BookShelves.Add(book);
                 db.SaveChanges();
+                return true;
             }
+            return false;
         }
         [HttpPost]
         public ActionResult DeleteBook(int id)
@@ -104,5 +120,15 @@ namespace BookShelf.Controllers
             }
             return bs;
         }
+        //[HttpGet]
+        //public ActionResult test()
+        //{
+
+        //}
+        //[HttpPost]
+        //public void test()
+        //{
+
+        //}
     }
 }

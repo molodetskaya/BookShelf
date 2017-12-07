@@ -10,9 +10,10 @@
 namespace BookShelf.Models
 {
     using System;
+    using System.Collections.Generic;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
-    
+
     public partial class BooksEntities : DbContext
     {
         public BooksEntities()
@@ -24,7 +25,25 @@ namespace BookShelf.Models
         {
             throw new UnintentionalCodeFirstException();
         }
-    
+
         public virtual DbSet<BookShelf> BookShelves { get; set; }
+            //get {
+            //    return new List<BookShelf>()
+            //    {
+            //        new BookShelf() { BookId = 1, BookAuthor="Достоевский", BookName="Преступление и наказание" },
+            //        new BookShelf() { BookId = 2, BookAuthor="Достоевский", BookName="Идиот" },
+            //        new BookShelf() { BookId = 3, BookAuthor="Джейн Остин", BookName="Чувства и чувствительность" },
+            //        new BookShelf() { BookId = 4, BookAuthor="Джейн Остин", BookName="Гордость и предубеждения" },
+            //        new BookShelf() { BookId = 5, BookAuthor="Чехов", BookName="Палата № 6" },
+            //        new BookShelf() { BookId = 6, BookAuthor="Макс Фрай", BookName="Лабиринты Эхо" },
+            //        new BookShelf() { BookId = 7, BookAuthor="Макс Фрай", BookName="Сновидения Эхо" },
+            //        new BookShelf() { BookId = 8, BookAuthor="Стивен Кинг", BookName="Оно" },
+            //        new BookShelf() { BookId = 9, BookAuthor="Стивен Кинг", BookName="Темная башня" }
+            //    };
+            //} set
+            //{
+            //    ;
+            //}
+        //}
     }
 }

@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<parameters>
+  <parameter name="IIS Web Application Name" description="" value="BooksShelves" tags="IisApp">
+    <parameterEntry kind="ProviderPath" scope="IisApp" match="^Y:\\Book\ Shelf\\BookShelf\\BookShelf\\obj\\Release\\Package\\PackageTmp$" />
+    <parameterEntry kind="ProviderPath" scope="setAcl" match="^Y:\\Book\ Shelf\\BookShelf\\BookShelf\\obj\\Release\\Package\\PackageTmp$" />
+  </parameter>
+  <parameter name="Add write permission to App_Data Folder" description="Add write permission to App_Data folder" value="BooksShelves/App_Data" tags="Hidden">
+    <parameterEntry kind="ProviderPath" scope="setAcl" match="^Y:\\Book\ Shelf\\BookShelf\\BookShelf\\obj\\Release\\Package\\PackageTmp\\App_Data$" />
+  </parameter>
+  <parameter name="BooksEntities-Web.config Connection String" description="" value="metadata=res://*/Models.BookShelfModel.csdl|res://*/Models.BookShelfModel.ssdl|res://*/Models.BookShelfModel.msl;provider=System.Data.SqlClient;provider connection string=&quot;data source=(LocalDB)\MSSQLLocalDB;attachdbfilename=|DataDirectory|\Books.mdf;integrated security=True;MultipleActiveResultSets=True;App=EntityFramework&quot;" tags="">
+    <parameterEntry kind="XmlFile" scope="Y:\\Book\ Shelf\\BookShelf\\BookShelf\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='BooksEntities']/@connectionString" />
+  </parameter>
+</parameters>

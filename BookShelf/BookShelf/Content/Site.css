@@ -30,3 +30,7 @@ textarea {
 .extremum-slide {
 	display:none;
 }
+
+.wrong-data {
+    border-color:red;
+}

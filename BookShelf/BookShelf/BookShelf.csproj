@@ -220,6 +220,8 @@
     <Content Include="Models\BookShelfModel.edmx.diagram">
       <DependentUpon>BookShelfModel.edmx</DependentUpon>
     </Content>
+    <None Include="Properties\PublishProfiles\BooksShelves - FTP.pubxml" />
+    <None Include="Properties\PublishProfiles\BooksShelves - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -252,9 +254,11 @@
     <Content Include="Service References\Application Insights\ConnectedService.json" />
     <Content Include="Views\Home\EditBook.cshtml" />
     <Content Include="Views\Home\AddBook.cshtml" />
-    <Content Include="Views\Home\DeleteBook.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Home\List.cshtml" />
+    <Content Include="Views\Home\EditForm.cshtml" />
+    <Content Include="Views\Home\AddForm.cshtml" />
+    <Content Include="Views\Home\test.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
