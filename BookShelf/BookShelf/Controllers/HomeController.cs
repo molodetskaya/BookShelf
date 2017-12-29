@@ -1,4 +1,7 @@
-﻿using BookShelf.Models;
+﻿// REVIEW NOTE: перенести базу данных с файла, который прикреплен к проекту в дефолтовое хранилище локального MS SQL Server
+// REVIEW NOTE: удалить "мертвый код"
+
+using BookShelf.Models;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
