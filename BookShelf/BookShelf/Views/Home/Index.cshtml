@@ -1,20 +1,17 @@
-﻿@{
-    ViewBag.Title = "Home";
-    // REVIEW NOTE: вынести скрипты в js отельный файл, который подключить через бандлы
-}
+﻿@model IEnumerable<Book>
 
 <div id="jumbatron ">
     <h1 id="add-button">Add book</h1>
     <div id="add-container" class="extremum-slide-adding">
-        @Html.Action("AddForm")
+        @{Html.RenderPartial("AddForm");}
     </div>
 </div>
 <div id="list-block" class="jumbotron">
-    @Html.Action("List")
+    @{Html.RenderPartial("List", Model);}
 </div>
 <div id="jumbatron ">
     <div id="editing-container" class="extremum-slide">
-        @Html.Action("EditForm")
+        @{Html.RenderPartial("EditForm");}
     </div>
 </div>
 
@@ -36,149 +33,4 @@
     </div>
 </div>
 
-@section scripts{
-    <script>
-        $(document).ready(function () {
-
-            SetEvents();
-            function SetEvents() {
-                $('.books').on('click', '#delete-button', function delete_book() {
-                    if ($('#edit-boxes').html() != '') {
-                        $('.extremum-slide').slideToggle(500, function () {
-                            $('#edit-boxes').html('');
-                        });
-                    }
-                    if ($('#add-boxes').html() != '') {
-                        $('.extremum-slide-adding').slideToggle(0, function () {
-                            $('#add-boxes').html('');
-                        });
-                    }
-                    var item = { id: $(this).attr("data-content") };
-                    var options = {
-                        "backdrop": "static"
-                    }
-                    $('#basicModal').modal(options);
-                    var url = '@Url.Action("GetName","Home")';
-                    $.get(url, item, function (data) {
-                        $('#myModalLabel').text("Delete " + data);
-                    })
-                    $('.js-btn-confirm').on('click', function () {
-                        var url1 = '@Url.Action("DeleteBook", "Home")';
-                        $.post(url1, item, function (data) {
-                            $('#tr-' + $(this).attr("data-content")).remove();
-                            UpdateList()
-                        });
-                    });
-                });
-
-                $('.books').on('click', '#edit-button', function edit_book() {
-                    if ($('#add-boxes').html() != '') {
-                        $('.extremum-slide-adding').slideToggle(0, function () {
-                            $('#add-boxes').html('');
-                        });
-                    }
-                    if ($('#edit-boxes').html() == '') {
-                        $('.extremum-slide').slideToggle(0);
-                    }
-                    var url = '@Url.Action("EditBook", "Home")';
-                    var item = { id: $(this).attr("data-content") };
-                    $.get(url, item, function (data) {
-                        $('#edit-boxes').html('');
-                        $('#edit-boxes').html(data);
-                        $('#edit-name').focus();
-                        $('.form-control').on('change', function () {
-                            CheckFields('#edit-boxes');
-                        });
-                    });
-                });
-            }
-            $('#edit-cancel').on('click', function () {
-                $('.extremum-slide').slideToggle(500, function () {
-                    $('#edit-boxes').html('');
-                });
-            });
-            $('#edit-submit').on('click', function () {
-                $('.extremum-slide').slideToggle(500, function () {
-                    $('#edit-boxes').html('');
-                });
-                var book = $('#edit-book-form').serialize();
-                var url = '@Url.Action("EditBook", "Home")';
-                $.post(url, book, function (result) {
-                    if (result == 'True') {
-                        $('.extremum-slide-adding').slideToggle(500, function () {
-                            $('#add-boxes').html('');
-                            UpdateList();
-                        });
-                    }
-                    else {
-                        $('.text-danger').removeClass('hidden');
-                    }
-                });
-            });
-
-            $('#add-button').on('click', function () {
-                if ($('#edit-boxes').html() != '') {
-                    $('.extremum-slide').slideToggle(500, function () {
-                        $('#edit-boxes').html('');
-                    });
-                }
-                if ($('#add-boxes').html() == '') {
-                    $('.extremum-slide-adding').slideToggle(500);
-                }
-                var url = '@Url.Action("AddBook", "Home")';
-                $.get(url, "", function (data) {
-                    $('#add-boxes').html('');
-                    $('#add-boxes').html(data);
-                    $('#add-name').focus();
-                    $('.form-control').on('change', function () {
-                        CheckFields('#add-boxes');
-                    });
-                });
-            });
-            $('#add-cancel').on('click', function () {
-                if ($('#add-boxes').html() != '') {
-                    $('.extremum-slide-adding').slideToggle(500, function () {
-                        $('#add-boxes').html('');
-                    });
-                }
-            });
-            $('#add-submit').on('click', function () {
-                if (CheckFields('#add-boxes') == 'False')
-                    return;
-                var book = $('#add-book-form').serialize();
-                var url = '@Url.Action("AddBook", "Home")';
-                $.post(url, book, function (result) {
-                    if (result == 'True') {
-                        $('.extremum-slide-adding').slideToggle(500, function () {
-                            $('#add-boxes').html('');
-                            UpdateList();
-                        });
-                    }
-                    else {
-                        $('.text-danger').removeClass('hidden');
-                    }
-                });
-            });
-
-            function CheckFields(container)
-            {
-                if ($(container + ' #edit-name').val() == '' || $(container + ' #edit-author').val() == '') {
-                    $('.text-danger').removeClass('hidden');
-                    return 'False';
-                }
-                else {
-                    $('.text-danger').addClass('hidden');
-                    return 'True';
-                }
-            }
-            function UpdateList() {
-                var url = '@Url.Action("List", "Home")';
-                $.get(url, {}, function (data) {
-                    $('#list-block').html('');
-                    $('#list-block').html(data);
-                    SetEvents();
-                });
-            }
-        });
-    </script>
-}
+@Scripts.Render("~/bundles/events")

@@ -1,48 +1,22 @@
-﻿// REVIEW NOTE: перенести базу данных с файла, который прикреплен к проекту в дефолтовое хранилище локального MS SQL Server
-// REVIEW NOTE: удалить "мертвый код"
-
-using BookShelf.Models;
-using System;
-using System.Collections.Generic;
+﻿using BookShelf.Models;
+using System.Configuration;
 using System.Data.Entity;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 
 namespace BookShelf.Controllers
 {
     public class HomeController : Controller
     {
-        BooksEntities db = new BooksEntities();
+        BooksEntities db = new BooksEntities(ConfigurationManager.ConnectionStrings[0].ConnectionString);
         public ActionResult Index()
         {
-            return View();
+            var model = db.BookShelves.ToList();
+            return View(model);
         }
-
         public ActionResult List()
         {
             return PartialView(db.BookShelves);
-        }
-        public ActionResult About()
-        {
-            ViewBag.Message = "Your application description page.";
-
-            return View();
-        }
-
-        public ActionResult Contact()
-        {
-            ViewBag.Message = "Your contact page.";
-
-            return View();
-        }
-        public ActionResult EditForm()
-        {
-            return PartialView();
-        }
-        public ActionResult AddForm()
-        {
-            return PartialView();
         }
         public ActionResult ConfirmModal()
         {
@@ -50,20 +24,30 @@ namespace BookShelf.Controllers
         }
         public ActionResult EditBook(int? id)
         {
-            Models.BookShelf bs = db.BookShelves.Find(id);
-
-            if (bs == null)
+            if (null == id)
+            {
+                return null;
+            }
+            Models.Book bs = db.BookShelves.Find(id);
+            if (null == bs)
             {
                 return HttpNotFound();
             }
             return PartialView(bs);
         }
         [HttpPost]
-        public bool EditBook(Models.BookShelf book)
+        public bool EditBook(int BookId, string BookName, string BookAuthor)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(book).State = EntityState.Modified;
+                Models.Book bs = db.BookShelves.FirstOrDefault(m => m.BookId == BookId);
+                if (null == bs)
+                {
+                    return false;
+                }
+                bs.BookName = BookName;
+                bs.BookAuthor = BookAuthor;
+                db.Entry(bs).State = EntityState.Modified;
                 db.SaveChanges();
                 return true;
             }
@@ -72,9 +56,12 @@ namespace BookShelf.Controllers
         [HttpGet]
         public string GetName(int? id)
         {
-            Models.BookShelf bs = db.BookShelves.Find(id);
-
-            if (bs == null)
+            if (null == id)
+            {
+                return "";
+            }
+            Models.Book bs = db.BookShelves.Find(id);
+            if (null == bs)
             {
                 return "";
             }
@@ -86,22 +73,26 @@ namespace BookShelf.Controllers
             return PartialView("AddBook");
         }
         [HttpPost]
-        public bool AddBook(Models.BookShelf book)
+        public bool AddBook(string BookName, string BookAuthor)
         {
             if (ModelState.IsValid)
             {
-                db.BookShelves.Add(book);
-                db.SaveChanges();
-                return true;
+                Models.Book bs = new Models.Book() { BookName = BookName, BookAuthor = BookAuthor };
+                db.BookShelves.Add(bs);
+                if (db.SaveChanges() > 0)
+                    return true;
             }
             return false;
         }
         [HttpPost]
-        public ActionResult DeleteBook(int id)
+        public ActionResult DeleteBook(int? id)
         {
-            Models.BookShelf bs = db.BookShelves.Find(id);
-
-            if (bs == null)
+            if (null == id)
+            {
+                return null;
+            }
+            Models.Book bs = db.BookShelves.Find(id);
+            if (null == bs)
             {
                 return HttpNotFound();
             }
@@ -109,29 +100,18 @@ namespace BookShelf.Controllers
             db.SaveChanges();
             return RedirectToAction("List");
         }
-        public Models.BookShelf GetBook(int? id)
+        public Models.Book GetBook(int? id)
         {
-            if (id == null)
+            if (null == id)
             {
                 return null;
             }
-            Models.BookShelf bs = db.BookShelves.Find(id);
-
-            if (bs == null)
+            Models.Book bs = db.BookShelves.Find(id);
+            if (null == bs)
             {
                 return null;
             }
             return bs;
         }
-        //[HttpGet]
-        //public ActionResult test()
-        //{
-
-        //}
-        //[HttpPost]
-        //public void test()
-        //{
-
-        //}
     }
 }
