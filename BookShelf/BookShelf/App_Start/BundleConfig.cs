@@ -27,8 +27,8 @@ namespace BookShelf
                       "~/Content/bootstrap.css",
                       "~/Content/site.css"));
 
-            bundles.Add(new ScriptBundle("~/bundles/bootbox").Include(
-          "~/Scripts/bootbox.js"));
+            bundles.Add(new ScriptBundle("~/bundles/events").Include(
+                        "~/Scripts/events-controller.js"));
         }
     }
 }
