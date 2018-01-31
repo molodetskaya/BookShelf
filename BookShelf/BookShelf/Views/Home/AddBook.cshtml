@@ -1,38 +1,24 @@
 ﻿@model Book
 
-@{
-    ViewBag.Title = "Add book";
-}
+<div class="well bs-component">
+    <form class="form-horizontal" id="add-book-form">
+        <fieldset>
 
-@using (Html.BeginForm("AddBook", "Home", FormMethod.Post, new { id = "add-book-form" }))
-{
-    @Html.AntiForgeryToken()
+            <div class="form-group-lg" id="group-name">
+                <label class="control-label invisible" for="edit-name" id="label-name">Couldn`t be empty!</label>
+                <input type="text" class="form-control input-lg" placeholder="Book Name" id="edit-name">
+            </div>
 
-    <div class="form-horizontal">
-        @Html.ValidationSummary(true, "Please, fill all fields.", new { @class = "text-danger" })
+            <div class="form-group-lg" id="group-author">
+                <label class="control-label invisible" for="edit-author" id="label-author">Couldn`t be empty!</label>
+                <input type="text" class="form-control input-lg" placeholder="Book Author" id="edit-author">
+            </div>
 
-        <div class="form-group">
-            <div class="col-md-2">
-                @Html.LabelFor(model => model.BookName, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="form-group-lg" style="margin-top:25pt">
+                <input type="button" id="add-cancel" value="Cancel" class="btn btn-default btn-lg" />
+                <input type="button" id="add-submit" value="Confirm" class="btn btn-success btn-lg" style="margin-left:20px;"/>
             </div>
-            <div class="col-md-4">
-                @Html.EditorFor(model => model.BookName, new { htmlAttributes = new { @class = "form-control", @id = "edit-name" } })
-            </div>
-            <div class="col-md-3">
-                @Html.ValidationMessageFor(model => model.BookName, "Couldn`t be empty!", new { @class = "text-danger hidden", @id = "edit-name-error" })
-            </div>
-        </div>
 
-        <div class="form-group">
-            <div class="col-md-2">
-                @Html.LabelFor(model => model.BookAuthor, htmlAttributes: new { @class = "control-label col-md-2" })
-            </div>
-            <div class="col-md-4">
-                @Html.EditorFor(model => model.BookAuthor, new { htmlAttributes = new { @class = "form-control", @id = "edit-author" } })
-            </div>
-            <div class="col-md-3">
-                @Html.ValidationMessageFor(model => model.BookAuthor, "Couldn`t be empty!", new { @class = "text-danger hidden", @id = "edit-author-error" })
-            </div>
-        </div>
-    </div>
-}
+        </fieldset>
+    </form>
+</div>
