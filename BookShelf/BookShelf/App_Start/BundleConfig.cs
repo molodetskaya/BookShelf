@@ -17,7 +17,8 @@ namespace BookShelf
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
-                      "~/Content/site.css"));
+                      "~/Content/site.css",
+                      "~/Content/nmt_styles.css"));
 
             bundles.Add(new ScriptBundle("~/bundles/events").Include(
                         "~/Scripts/events-controller.js"));

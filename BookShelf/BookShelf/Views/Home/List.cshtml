@@ -1,20 +1,24 @@
 ﻿@model IEnumerable<Book>
 
-<table id="list-books" class="table table-striped books">
-    <tr class="header">
-        <th class="col-md-2"><p>Book Id</p></th>
-        <th class="col-md-4"><p>Book Name</p></th>
-        <th class="col-md-4"><p>BookAuthor</p></th>
-        <th class="col-md-2"><p></p></th>
-    </tr>
-    @foreach (Book b in Model)
-    {
-        <tr id="tr-@b.BookId">
-            <td class="col-md-2"><p>@b.BookId</p></td>
-            <td class="col-md-4"><a id="edit-button", data-content="@b.BookId"> @b.BookName </a></td>
-            <td class="col-md-4"><p>@b.BookAuthor</p></td>
-            <td><button data-content="@b.BookId" id="delete-button" class="btn-default">Delete</button></td>
+<table id="list-books" class="table table-striped table-hover table-responsive books" style="padding:0">
+    <thead>
+        <tr>
+            <th><p>Book Id</p></th>
+            <th><p>Book Name</p></th>
+            <th><p>BookAuthor</p></th>
+            <th><p>Delete item</p></th>
         </tr>
-    }
+    </thead>
+    <tbody>
+        @foreach (Book b in Model)
+        {
+            <tr id="edit-button" data-content="@b.BookId">
+                <td><p>@b.BookId</p></td>
+                <td><p> @b.BookName </p></td>
+                <td><p>@b.BookAuthor</p></td>
+                <td><button data-content="@b.BookId" id="delete-button" class="btn btn-success">Delete</button></td>
+            </tr>
+        }
+    </tbody>
 </table>
 
