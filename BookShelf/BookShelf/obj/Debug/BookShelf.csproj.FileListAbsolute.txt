@@ -128,8 +128,6 @@ Y:\BookShelf\BookShelf\BookShelf\bin\BookShelf.dll.config
 Y:\BookShelf\BookShelf\BookShelf\bin\BookShelf.dll
 Y:\BookShelf\BookShelf\BookShelf\bin\BookShelf.pdb
 Y:\BookShelf\BookShelf\BookShelf\bin\Antlr3.Runtime.dll
-Y:\BookShelf\BookShelf\BookShelf\bin\EntityFramework.dll
-Y:\BookShelf\BookShelf\BookShelf\bin\EntityFramework.SqlServer.dll
 Y:\BookShelf\BookShelf\BookShelf\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
 Y:\BookShelf\BookShelf\BookShelf\bin\Microsoft.Web.Infrastructure.dll
 Y:\BookShelf\BookShelf\BookShelf\bin\Newtonsoft.Json.dll
@@ -141,13 +139,6 @@ Y:\BookShelf\BookShelf\BookShelf\bin\System.Web.WebPages.Deployment.dll
 Y:\BookShelf\BookShelf\BookShelf\bin\System.Web.WebPages.dll
 Y:\BookShelf\BookShelf\BookShelf\bin\System.Web.WebPages.Razor.dll
 Y:\BookShelf\BookShelf\BookShelf\bin\WebGrease.dll
-Y:\BookShelf\BookShelf\BookShelf\bin\EntityFramework.xml
-Y:\BookShelf\BookShelf\BookShelf\bin\EntityFramework.SqlServer.xml
-Y:\BookShelf\BookShelf\BookShelf\bin\Microsoft.AI.DependencyCollector.xml
-Y:\BookShelf\BookShelf\BookShelf\bin\Microsoft.AI.ServerTelemetryChannel.xml
-Y:\BookShelf\BookShelf\BookShelf\bin\Microsoft.AI.Web.xml
-Y:\BookShelf\BookShelf\BookShelf\bin\Microsoft.AI.WindowsServer.xml
-Y:\BookShelf\BookShelf\BookShelf\bin\Microsoft.ApplicationInsights.xml
 Y:\BookShelf\BookShelf\BookShelf\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
 Y:\BookShelf\BookShelf\BookShelf\bin\System.Web.Helpers.xml
 Y:\BookShelf\BookShelf\BookShelf\bin\System.Web.Mvc.xml
@@ -160,7 +151,6 @@ Y:\BookShelf\BookShelf\BookShelf\bin\Antlr3.Runtime.pdb
 Y:\BookShelf\BookShelf\BookShelf\bin\Newtonsoft.Json.xml
 Y:\BookShelf\BookShelf\BookShelf\obj\Debug\BookShelf.dll
 Y:\BookShelf\BookShelf\BookShelf\obj\Debug\BookShelf.pdb
-Y:\BookShelf\BookShelf\BookShelf\obj\Debug\BookShelf.csprojResolveAssemblyReference.cache
 Y:\refactoringBookS\BookShelf\BookShelf\BookShelf\bin\roslyn\csc.exe
 Y:\refactoringBookS\BookShelf\BookShelf\BookShelf\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
 Y:\refactoringBookS\BookShelf\BookShelf\BookShelf\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
@@ -217,3 +207,6 @@ Y:\refactoringBookS\BookShelf\BookShelf\BookShelf\bin\Newtonsoft.Json.xml
 Y:\refactoringBookS\BookShelf\BookShelf\BookShelf\obj\Debug\BookShelf.csprojResolveAssemblyReference.cache
 Y:\refactoringBookS\BookShelf\BookShelf\BookShelf\obj\Debug\BookShelf.dll
 Y:\refactoringBookS\BookShelf\BookShelf\BookShelf\obj\Debug\BookShelf.pdb
+Y:\BookShelf\BookShelf\BookShelf\obj\Debug\BookShelf.csprojResolveAssemblyReference.cache
+Y:\BookShelf\BookShelf\BookShelf\bin\Dapper.dll
+Y:\BookShelf\BookShelf\BookShelf\bin\Dapper.xml
