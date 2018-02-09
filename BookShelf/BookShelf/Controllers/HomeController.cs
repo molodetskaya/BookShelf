@@ -1,34 +1,29 @@
 ﻿using BookShelf.Models;
+using Dapper.Repositories;
 using System.Configuration;
-using System.Data.Entity;
-using System.Linq;
 using System.Web.Mvc;
 
 namespace BookShelf.Controllers
 {
     public class HomeController : Controller
     {
-        BooksEntities db = new BooksEntities(ConfigurationManager.ConnectionStrings[0].ConnectionString);
+        IBookRepository bookRepository = new BookRepository(ConfigurationManager.ConnectionStrings["BooksEntities"].ConnectionString);
         public ActionResult Index()
         {
-            var model = db.BookShelves.ToList();
+            var model = bookRepository.GetAllBooks();
             return View(model);
         }
         public ActionResult List()
         {
-            return PartialView(db.BookShelves);
+            return PartialView(bookRepository.GetAllBooks());
         }
         public ActionResult ConfirmModal()
         {
             return PartialView();
         }
-        public ActionResult EditBook(int? id)
+        public ActionResult EditBook(int id)
         {
-            if (null == id)
-            {
-                return null;
-            }
-            Models.Book bs = db.BookShelves.Find(id);
+            Models.Book bs = bookRepository.Get(id);
             if (null == bs)
             {
                 return HttpNotFound();
@@ -40,27 +35,22 @@ namespace BookShelf.Controllers
         {
             if (ModelState.IsValid)
             {
-                Models.Book bs = db.BookShelves.FirstOrDefault(m => m.BookId == BookId);
+                Models.Book bs = bookRepository.Get(BookId);
                 if (null == bs)
                 {
                     return false;
                 }
                 bs.BookName = BookName;
                 bs.BookAuthor = BookAuthor;
-                db.Entry(bs).State = EntityState.Modified;
-                db.SaveChanges();
+                bookRepository.Update(bs);
                 return true;
             }
             return false;
         }
         [HttpGet]
-        public string GetName(int? id)
+        public string GetName(int id)
         {
-            if (null == id)
-            {
-                return "";
-            }
-            Models.Book bs = db.BookShelves.Find(id);
+            Models.Book bs = bookRepository.Get(id);
             if (null == bs)
             {
                 return "";
@@ -78,35 +68,20 @@ namespace BookShelf.Controllers
             if (ModelState.IsValid)
             {
                 Models.Book bs = new Models.Book() { BookName = BookName, BookAuthor = BookAuthor };
-                db.BookShelves.Add(bs);
-                if (db.SaveChanges() > 0)
-                    return true;
+                bookRepository.Create(bs);
+                return true;
             }
             return false;
         }
         [HttpPost]
-        public ActionResult DeleteBook(int? id)
+        public ActionResult DeleteBook(int id)
         {
-            if (null == id)
-            {
-                return null;
-            }
-            Models.Book bs = db.BookShelves.Find(id);
-            if (null == bs)
-            {
-                return HttpNotFound();
-            }
-            db.BookShelves.Remove(bs);
-            db.SaveChanges();
+            bookRepository.Delete(id);
             return RedirectToAction("List");
         }
-        public Models.Book GetBook(int? id)
+        public Models.Book GetBook(int id)
         {
-            if (null == id)
-            {
-                return null;
-            }
-            Models.Book bs = db.BookShelves.Find(id);
+            Models.Book bs = bookRepository.Get(id);
             if (null == bs)
             {
                 return null;
