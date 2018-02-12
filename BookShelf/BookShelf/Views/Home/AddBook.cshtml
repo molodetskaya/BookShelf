@@ -1,22 +1,30 @@
 ﻿@model Book
 
-<div class="well bs-component">
-    <form class="form-horizontal" id="add-book-form">
-        <fieldset>
+<div class="well bs-component row">
+    <form class="form-horizontal row" id="add-book-form">
+        <fieldset class="row">
 
-            <div class="form-group-lg" id="group-name">
-                <label class="control-label invisible" for="edit-name" id="label-name">Couldn`t be empty!</label>
-                <input type="text" class="form-control input-lg" placeholder="Book Name" id="edit-name">
+            <div class="row form-group-lg" id="group-name">
+                <div class="row">
+                    <label class="control-label invisible col-lg-2" for="edit-name" id="label-name">Couldn`t be empty!</label>
+                </div>
+                <div class="row">
+                    <input type="text" class="form-control input-lg  col-lg-12" placeholder="Book Name" id="edit-name">
+                </div>
             </div>
 
-            <div class="form-group-lg" id="group-author">
-                <label class="control-label invisible" for="edit-author" id="label-author">Couldn`t be empty!</label>
-                <input type="text" class="form-control input-lg" placeholder="Book Author" id="edit-author">
+            <div class="row form-group-lg" id="group-author">
+                <div class="row">
+                    <label class="control-label invisible col-lg-2" for="edit-author" id="label-author">Couldn`t be empty!</label>
+                </div>
+                <div class="row">
+                    <input type="text" class="form-control input-lg  col-lg-12" placeholder="Book Author" id="edit-author">
+                </div>
             </div>
 
-            <div class="form-group-lg" style="margin-top:25pt">
-                <input type="button" id="add-cancel" value="Cancel" class="btn btn-default btn-lg" />
-                <input type="button" id="add-submit" value="Confirm" class="btn btn-success btn-lg" style="margin-left:20px;"/>
+            <div class="row form-group-lg">
+                <input type="button" id="add-cancel" value="Cancel" class="btn btn-default btn-lg col-lg-2" />
+                <input type="button" id="add-submit" value="Confirm" class="btn btn-success btn-lg col-lg-2 col-lg-offset-1" />
             </div>
 
         </fieldset>

@@ -1,28 +1,36 @@
 ﻿@model Book
 
-<div class="well bs-component">
-    <h1>Edit book</h1>
+<div class="well bs-component row">
+    <h1 class="row">Edit book</h1>
 
-    <form class="form-horizontal" id="edit-book-form">
-        <fieldset>
+    <form class="form-horizontal row" id="edit-book-form">
+        <fieldset class="row">
 
-            <div class="form-group-lg hidden" id="group-name">
-                <input type="text" class="form-control input-lg" placeholder="Book ID" id="edit-id" value=@Model.BookId>
+            <div class="row form-group-lg hidden" id="group-name">
+                <input type="text" class="form-control input-lg col-lg-12" placeholder="Book ID" id="edit-id" value=@Model.BookId>
             </div>
 
-            <div class="form-group-lg" id="group-name">
-                <label class="control-label invisible" for="edit-name" id="label-name">Couldn`t be empty!</label>
-                <input type="text" class="form-control input-lg" placeholder="Book Name" id="edit-name"  value=@Model.BookName>
+            <div class="row form-group-lg" id="group-name">
+                <div class="row">
+                    <label class="control-label invisible col-lg-2" for="edit-name" id="label-name">Couldn`t be empty!</label>
+                </div>
+                <div class="row">
+                    <input type="text" class="form-control input-lg  col-lg-12" placeholder="Book Name" id="edit-name" value=@Model.BookName>
+                </div>
             </div>
 
-            <div class="form-group-lg" id="group-author">
-                <label class="control-label invisible" for="edit-author" id="label-author">Couldn`t be empty!</label>
-                <input type="text" class="form-control input-lg" placeholder="Book Author" id="edit-author"  value=@Model.BookAuthor>
+            <div class="row form-group-lg" id="group-author">
+                <div class="row">
+                    <label class="control-label invisible col-lg-2" for="edit-author" id="label-author">Couldn`t be empty!</label>
+                </div>
+                <div class="row">
+                    <input type="text" class="form-control input-lg  col-lg-12" placeholder="Book Author" id="edit-author" value=@Model.BookAuthor>
+                </div>
             </div>
 
-            <div class="form-group-lg" style="margin-top:25pt">
-                <input type="button" id="edit-cancel" value="Cancel" class="btn btn-default btn-lg" />
-                <input type="button" id="edit-submit" value="Confirm" class="btn btn-success btn-lg" style="margin-left:20px;" />
+            <div class="row form-group-lg">
+                <input type="button" id="edit-cancel" value="Cancel" class="btn btn-default btn-lg col-lg-2" />
+                <input type="button" id="edit-submit" value="Confirm" class="btn btn-success btn-lg col-lg-2 col-lg-offset-1" />
             </div>
 
         </fieldset>

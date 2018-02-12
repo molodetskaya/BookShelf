@@ -1,17 +1,17 @@
 ﻿@model IEnumerable<Book>
 
-<div>
-    <h1 id="add-button">Add book</h1>
-    <div id="add-container" class="extremum-slide-adding">
-        <div id="add-boxes" style="margin-top:-40px"></div>
+<div class="row">
+    <h1 id="add-button" class="col-lg-12">Add book</h1>
+    <div id="add-container" class="extremum-slide-adding  col-lg-12">
+        <div id="add-boxes" class="col-lg-12"></div>
     </div>
 </div>
-<div id="list-block">
+<div id="list-block" class="row">
     @{Html.RenderPartial("List", Model);}
 </div>
-<div>
-    <div id="edit-container" class="extremum-slide">
-        <div id="edit-boxes" style="margin-top:-40px"></div>
+<div class="row">
+    <div id="edit-container" class="extremum-slide col-lg-12">
+        <div id="edit-boxes" class="col-lg-12"></div>
     </div>
 </div>
 

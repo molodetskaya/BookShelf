@@ -8,7 +8,6 @@
 }
 
 body {
-    margin: 0;
     font-family: Roboto,"Helvetica Neue",Helvetica,Arial,sans-serif;
     font-size: 14px;
     letter-spacing: .1px;
@@ -41,6 +40,11 @@ a {
     box-shadow: 0 2px 4px -1px rgba(0,0,0,.2),0 4px 5px 0 rgba(0,0,0,.14),0 1px 10px 0 rgba(0,0,0,.12);
 }
 
+.row {
+  margin-right: 0px;
+  margin-left: 0px;
+}
+
 .navbar-default {
     background-color: #34c48f;
 }
@@ -51,9 +55,9 @@ a {
 
 .navbar-brand {
     margin-left: -15px;
-    font-size: 24px;
+    font-size: 36px;
     float: left;
-    padding: 20.5px 15px;
+    padding: 13px 15px;
     line-height: 23px;
     height: 64px;
 }
@@ -352,6 +356,7 @@ input {
 .has-error .control-label {
     color: #e51c23;
     font-style: normal;
+    text-align: left;
 }
 
 .close {
@@ -491,4 +496,16 @@ input {
     .modal-lg {
         width: 900px;
     }
+}
+
+.btn-group {
+    margin-top:25pt;
+}
+
+.form-group-lg {
+    margin-top: 20px;
+}
+
+fieldset {
+    margin-top: 20px;
 }
